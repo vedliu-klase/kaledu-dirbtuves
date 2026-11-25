@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kalėdų dirbtuvės</title>
+<style>
+:root{--bg:#f3f8f4;--fg:#12372a;--card:#ffffff;--line:#bcd3c6;--accent:#c62828;--accent-fg:#ffffff;--muted:#4b6b5b;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0f2219;--fg:#eef6f0;--card:#173226;--line:#2f5642;--accent:#e2504f;--muted:#a7c4b4;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f2219;--fg:#eef6f0;--card:#173226;--line:#2f5642;--accent:#e2504f;--muted:#a7c4b4;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;line-height:1.4}
+main{max-width:1040px;margin:0 auto;padding:16px}
+h1{font-size:1.7rem;margin:4px 0;font-weight:700}
+.lead{margin:0 0 14px;color:var(--muted);max-width:62ch}
+.wrap{display:grid;gap:16px;grid-template-columns:minmax(0,1fr)}
+@media(min-width:820px){.wrap{grid-template-columns:minmax(0,1fr) 360px;align-items:start}}
+.stage{border:3px solid var(--line);border-radius:22px;overflow:hidden;background:#fff}
+svg{display:block;width:100%;height:auto;max-height:72vh;touch-action:manipulation;cursor:pointer}
+.bar{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.panel{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:14px;display:grid;gap:16px}
+h2{font-size:1rem;margin:0 0 6px;font-weight:700}
+.row{display:flex;flex-wrap:wrap;gap:8px}
+button,input,label{font:inherit;color:inherit}
+button{cursor:pointer}
+.chip{border:2px solid var(--line);background:transparent;border-radius:12px;padding:8px 12px;min-height:44px}
+.chip[aria-pressed="true"]{border-color:var(--accent);background:var(--accent);color:var(--accent-fg);font-weight:600}
+.chip:disabled{opacity:.4;cursor:default}
+.tools .chip{flex:1 1 30%;text-align:center}
+.sw{width:34px;height:34px;border-radius:50%;border:3px solid var(--line);padding:0}
+.sw[aria-pressed="true"]{border-color:var(--fg);outline:3px solid var(--accent);outline-offset:2px}
+.own{width:34px;height:34px;border-radius:50%;border:3px dashed var(--line);padding:0;background:none;cursor:pointer}
+.dc{width:46px;height:46px;font-size:1.4rem;border:2px solid var(--line);background:transparent;border-radius:12px;padding:0}
+.dc[aria-pressed="true"]{border-color:var(--accent);background:var(--accent);color:var(--accent-fg)}
+.sl{display:grid;grid-template-columns:76px 1fr 34px;gap:8px;align-items:center;margin:6px 0}
+.sl input{accent-color:var(--accent)}
+input[type=text]{width:100%;padding:10px 12px;border:2px solid var(--line);border-radius:12px;background:var(--bg)}
+.tip{margin:0;color:var(--muted);font-size:.92rem}
+.dirbox{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.dirbox svg{width:110px;max-height:none;cursor:default}
+.big{flex:1 1 260px;min-height:110px;font-size:1.25rem;border-width:3px;border-radius:20px;background:var(--card)}
+.big small{font-weight:400;color:var(--muted);font-size:.9rem}
+.sub{margin:10px 0 4px;font-weight:600;font-size:.95rem}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+/* ---- Šventinis dizainas ---- */
+body{position:relative;min-height:100vh;background:#e6f2f9 linear-gradient(180deg,#0b2a4a 0,#1b5a86 300px,#e6f2f9 300px)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) body{background:#0f2219 linear-gradient(180deg,#07182b 0,#10405f 300px,#0f2219 300px)}}
+body::before{content:"";position:absolute;inset:0 0 auto 0;height:320px;pointer-events:none;opacity:.85;
+background-image:radial-gradient(3px 3px at 20px 30px,#fff,transparent),radial-gradient(2px 2px at 90px 80px,#fff,transparent),radial-gradient(4px 4px at 160px 20px,#fff,transparent),radial-gradient(2px 2px at 60px 140px,#fff,transparent),radial-gradient(3px 3px at 130px 110px,#fff,transparent);
+background-size:200px 160px;animation:snowfall 16s linear infinite}
+@keyframes snowfall{to{background-position:40px 160px}}
+@media (prefers-reduced-motion: reduce){body::before{animation:none}}
+main{position:relative;z-index:1;max-width:1240px}
+h1{color:#fff;font-size:2.4rem;margin:10px 0 4px;text-shadow:0 2px 14px rgba(0,0,0,.4)}
+.lead{color:#d6ebf8;font-size:1.08rem}
+.stage{border:5px solid #fff;border-radius:26px;box-shadow:0 14px 34px rgba(8,38,66,.3)}
+.panel{border:0;border-radius:24px;box-shadow:0 14px 34px rgba(8,38,66,.2)}
+svg{max-height:80vh}
+h2{display:flex;align-items:center;gap:8px}
+h2::before{content:"";width:8px;height:20px;border-radius:4px;background:linear-gradient(#d62828,#2a9d4f)}
+.chip{border-radius:999px;background:var(--card);transition:transform .12s,box-shadow .12s}
+.chip:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 5px 12px rgba(0,0,0,.15)}
+.chip[aria-pressed="true"]{background:linear-gradient(135deg,#e04040,#a31616);border-color:#a31616;color:#fff}
+.dc{border-radius:14px}
+.big{min-height:150px;border-radius:28px;font-size:1.45rem;font-weight:700;text-align:left;padding:18px 24px;border:0;box-shadow:0 12px 28px rgba(8,38,66,.3)}
+.big:hover{transform:translateY(-3px)}
+.big .ico{font-size:3rem;display:block;line-height:1.1}
+.big small{display:block;margin-top:6px}
+[data-go="zaisliukai"]{background:linear-gradient(135deg,#fff,#ffd9d6);color:#7a1414}
+[data-go="miestelis"]{background:linear-gradient(135deg,#fff,#d4ecfb);color:#0f3d62}
+@media(min-width:820px){#orn{grid-template-columns:minmax(0,1fr) 400px}}
+#town{grid-template-columns:minmax(0,1fr)}
+.tpanel{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.tpanel>.tip{grid-column:1/-1}
+.sh{display:flex;flex-direction:column;align-items:center;gap:2px;width:96px;padding:6px 4px;font-size:.78rem;line-height:1.15;text-align:center;border:2px solid var(--line);background:var(--card);border-radius:14px}
+.sh svg{width:58px;height:46px;max-height:none;cursor:pointer}
+.sh:hover{border-color:var(--accent);transform:translateY(-1px)}
+.exbox{background:var(--card);border-radius:24px;padding:14px;box-shadow:0 14px 34px rgba(8,38,66,.2);display:grid;gap:10px;align-content:start}
+.exbox svg{border-radius:14px;border:2px solid var(--line);max-height:none}
+@media(min-width:1000px){#town{grid-template-columns:minmax(0,1fr) 300px}#town .tpanel{grid-column:1/-1}}
+</style>
+</head>
+<body>
+<main>
+<h1>Kalėdų dirbtuvės</h1>
+<p class="lead">Pasirink, ką šiandien kursi. Kai baigsi, padaryk ekrano nuotrauką.</p>
+<div class="row" id="pick" style="margin-bottom:16px"><button class="chip big" data-go="zaisliukai"><span class="ico">🎄</span>Kuriu žaisliuką<small>Spalvink ir puošk savo žaisliuką</small></button><button class="chip big" data-go="miestelis"><span class="ico">🏰</span>Statau sniego miestelį<small>Sudėliok figūras ir pastatyk savo miestelį</small></button></div>
+<button class="chip" id="back" hidden style="margin-bottom:14px">← Kitas pasirinkimas</button>
+<div class="wrap" id="orn" hidden>
+  <section>
+    <div class="stage">
+      <svg id="svg" viewBox="0 0 300 345" role="img" aria-label="Kalėdinis žaisliukas, kurį gali spalvinti ir puošti">
+        <defs id="defs"></defs>
+        <rect id="bgr" width="300" height="345" fill="#eaf4ff"/>
+        <g id="obg"></g>
+        <g id="art"></g>
+        <g id="deco"></g>
+        <g id="osnow" pointer-events="none"></g>
+        <text id="name" x="150" y="334" text-anchor="middle" font-size="22" font-weight="700" fill="#12372a"></text>
+      </svg>
+    </div>
+    <div class="bar">
+      <button class="chip" id="undo">↶ Atgal</button>
+      <button class="chip" id="redo">Pirmyn ↷</button>
+      <button class="chip" id="clear">Pradėti iš naujo</button><button class="chip" id="osn" aria-pressed="true">❄ Sninga</button>
+    </div>
+  </section>
+  <aside class="panel">
+    <div><h2>1. Pasirink žaisliuką</h2><div class="row" id="shapes"></div></div>
+    <div><h2>2. Pasirink, ką darysi</h2>
+      <div class="row tools" id="tools">
+        <button class="chip" data-t="fill">Spalvinti</button>
+        <button class="chip" data-t="deco">Puošti</button>
+        <button class="chip" data-t="erase">✕ Ištrinti papuošalą</button>
+      </div>
+    </div>
+    <div id="pFill">
+      <h2>Spalva</h2><div class="row" id="palA"></div>
+      <div class="sub">Raštas</div><div class="row" id="pats"></div>
+      <div id="boxB"><div class="sub">Rašto spalva</div><div class="row" id="palB"></div></div>
+      <p class="tip" style="margin-top:10px">Paspausk žaisliuko dalį, kurią nori nuspalvinti. Kiekviena dalis gali turėti savo spalvą ir raštą.</p>
+    </div>
+    <div id="pDeco" hidden>
+      <h2>Papuošalai</h2><div class="row" id="glyphs"></div>
+      <div class="sub">Paveikslėliai</div><div class="row" id="emojis"></div>
+      <div class="sub">Spalva</div><div class="row" id="palD"></div>
+      <div class="sl"><span>Dydis</span><input type="range" id="size" min="14" max="80" value="34"><output id="sizeO">34</output></div>
+      <div class="sub">Papuošalo kryptis</div><div class="dirbox"><svg id="pv" viewBox="-60 -60 120 120" aria-hidden="true"><circle r="54" fill="#ffffff" stroke="#bcd3c6" stroke-width="3"/><g id="pvg"><path d="M0 -52 L-8 -38 L8 -38 Z" fill="#c62828"/><text id="pvt" text-anchor="middle" dominant-baseline="central" font-size="34" fill="#c62828">❄</text></g></svg><div><input type="range" id="rot" min="0" max="345" step="15" value="0" aria-label="Papuošalo kryptis" style="width:100%"><div class="row" style="margin:6px 0"><button class="chip" data-r="0" aria-label="Viršus aukštyn">↑</button><button class="chip" data-r="90" aria-label="Viršus į dešinę">→</button><button class="chip" data-r="180" aria-label="Viršus žemyn">↓</button><button class="chip" data-r="270" aria-label="Viršus į kairę">←</button></div><p class="tip">Kryptis: <output id="rotO">0</output>°. Raudona rodyklė rodo papuošalo viršų: pasuk slankiklį ir žiūrėk, kur ji nukreipta.</p></div></div>
+      <div class="sub">Kiek kartų pakartoti papuošalą</div><div class="row" id="syms"></div>
+      <p class="tip" style="margin-top:10px">Paspausk ten, kur nori padėti papuošalą. Jei pasirinkai kartojimą, papuošalas atsiras kelis kartus aplink žaisliuko vidurį.</p>
+    </div>
+    <div id="pErase" hidden><p class="tip">Šis įrankis ištrina tik papuošalus (snaigeles, žvaigždutes ir kitus), o ne spalvas. Paspausk papuošalą, kurį nori pašalinti. Jei papuošalą pakartojai kelis kartus, ištrinsis ir visos jo kopijos.</p></div>
+    <div><h2>3. Fonas</h2>
+      <div class="row" id="bgs"></div>
+      </div><div><h2>4. Tavo vardas</h2>
+      <input type="text" id="who" maxlength="18" placeholder="Įrašyk vardą" autocomplete="off">
+    </div>
+    <p class="tip">Kai baigsi, padaryk ekrano nuotrauką: kompiuteryje paspausk Win + Shift + S, o planšetėje ar telefone kartu paspausk maitinimo ir garso mažinimo mygtukus.</p>
+  </aside>
+</div>
+<div class="wrap" id="town" hidden>
+  <section>
+    <div class="stage"><svg id="tsvg" viewBox="0 0 900 560" style="touch-action:none" role="img" aria-label="Sniego miestelis iš geometrinių figūrų ir detalių">
+      <defs><linearGradient id="tg" x1="0" y1="0" x2="0" y2="1"><stop id="tg0" offset="0" stop-color="#8fcbf0"/><stop id="tg1" offset="1" stop-color="#e4f4fc"/></linearGradient>
+      <radialGradient id="glow"><stop offset="0" stop-color="#ffe27a" stop-opacity=".95"/><stop offset="1" stop-color="#ffe27a" stop-opacity="0"/></radialGradient></defs>
+      <rect width="900" height="560" fill="url(#tg)"/>
+      <g id="tbg"></g>
+      <g id="tart"></g>
+      <g id="tsnow" pointer-events="none"></g>
+      <text id="tname" x="450" y="44" text-anchor="middle" font-size="30" font-weight="700" fill="#12372a"></text>
+    </svg></div>
+    <div class="bar"><button class="chip" id="tundo">↶ Atgal</button><button class="chip" id="tredo">Pirmyn ↷</button><button class="chip" id="tclear">Pradėti iš naujo</button><button class="chip" id="tsn" aria-pressed="true">❄ Sninga</button></div>
+  </section>
+  <div class="exbox"><h2>Pavyzdys</h2><svg id="texsv" viewBox="0 0 900 560" role="img" aria-label="Sniego miestelio pavyzdys"></svg><div class="row" id="tex"></div><p class="tip" id="texn"></p><p class="tip">Pažiūrėk į pavyzdį ir pastatyk panašų miestelį pats.</p></div>
+  <aside class="panel tpanel">
+    <div><h2>1. Geometrinės figūros</h2><div class="row" id="tgeo"></div></div>
+    <div><h2>2. Detalės ir dekoracijos</h2><div class="row" id="tdet"></div></div>
+    <div><h2>3. Spalva</h2><div class="row" id="tpal"></div><p class="tip" style="margin-top:6px">Nauja figūra bus šios spalvos. Jei dalis pažymėta, ji nusidažys iškart. Detalės turi savo spalvas, bet jas irgi galima keisti.</p></div>
+    <div><h2>4. Pažymėta dalis</h2>
+      <p class="tip" id="tnone">Paspausk dalį miestelyje, kad ją pažymėtum. Tada galėsi keisti jos dydį ar ją ištrinti. Pažymėtą dalį galima stumdyti ir rodyklių klavišais.</p>
+      <div id="tctl" hidden>
+        <div class="row"><button class="chip" data-op="up">＋ Didesnė</button><button class="chip" data-op="dn">－ Mažesnė</button><button class="chip" data-op="w+">↔ Platesnė</button><button class="chip" data-op="w-">↔ Siauresnė</button><button class="chip" data-op="h+">↕ Aukštesnė</button><button class="chip" data-op="h-">↕ Žemesnė</button></div>
+        <div class="row" style="margin-top:8px"><button class="chip" data-op="front">Kelti į priekį</button><button class="chip" data-op="back">Nuleisti už kitų</button><button class="chip" data-op="dup">Kopijuoti</button><button class="chip" data-op="del">✕ Ištrinti</button></div>
+      </div>
+    </div>
+    <div><h2>5. Dangus ir pavadinimas</h2><div class="row" id="tskyb"></div><input type="text" id="tn" maxlength="30" placeholder="Pvz.: Ledo miestelis" autocomplete="off" style="margin-top:10px"></div>
+    <p class="tip">Kai baigsi, padaryk ekrano nuotrauką: kompiuteryje paspausk Win + Shift + S, o planšetėje ar telefone kartu paspausk maitinimo ir garso mažinimo mygtukus.</p>
+  </aside>
+</div>
+</main>
+<script>
+(function(){
+var LINE='#3a3a3a',BASE='#f4f4f4',GOLD='#d4a72c',RED='#d62828';
+function R(id,tag,at,f){return '<'+tag+' class="r" data-id="'+id+'" '+at+' fill="'+(f||BASE)+'" stroke="'+LINE+'" stroke-width="3" stroke-linejoin="round"/>';}
+function H(d){var m=d.match(/M(\d+) (\d+)/),x=+m[1],y=+m[2]-8;return '<line x1="'+x+'" y1="10" x2="'+x+'" y2="'+(y-11)+'" stroke="#c9a227" stroke-width="2.5" pointer-events="none"/><circle cx="'+x+'" cy="'+y+'" r="11" fill="none" stroke="#6f6f6f" stroke-width="4" pointer-events="none"/>';}
+function OL(d){return '<path d="'+d+'" fill="none" stroke="'+LINE+'" stroke-width="3" pointer-events="none"/>';}
+function CP(inner){return '<clipPath id="k">'+inner+'</clipPath>';}
+var STAR='150,70 182.3,145.5 264.1,152.9 202.3,207 220.5,287.1 150,245 79.5,287.1 97.7,207 35.9,152.9 117.7,145.5';
+var BELL='M92 256 C92 170 108 104 150 104 C192 104 208 170 208 256 Z';
+var HEART='M150 300 C60 240 25 175 45 130 C65 85 125 85 150 130 C175 85 235 85 255 130 C275 175 240 240 150 300 Z';
+var CAP='M75 258 C90 160 120 90 190 70 C215 64 235 80 225 110 C215 140 222 200 228 258 Z';
+var SHAPES={
+ball:{n:'Rutulys',c:[150,195],s:H('M150 66 q0-34 -24-34 q-16 0 -16 16')+CP('<circle cx="150" cy="195" r="110"/>')+R('body','circle','cx="150" cy="195" r="110"')+'<g clip-path="url(#k)">'+R('top','rect','x="30" y="95" width="240" height="40"')+R('band','rect','x="30" y="160" width="240" height="46"')+R('bottom','rect','x="30" y="250" width="240" height="60"')+'</g>'+OL('M40 195a110 110 0 1 0 220 0a110 110 0 1 0 -220 0')+R('cap','rect','x="128" y="66" width="44" height="26" rx="6"',GOLD)},
+star:{n:'Žvaigždė',c:[150,190],s:H('M150 52 q0-30 -22-30 q-15 0 -15 14')+R('star','polygon','points="'+STAR+'"')+R('inner','polygon','points="'+STAR+'" transform="translate(150 190) scale(.5) translate(-150 -190)"')+R('core','circle','cx="150" cy="190" r="14"',GOLD)+R('cap','rect','x="132" y="50" width="36" height="22" rx="5"',GOLD)},
+tree:{n:'Eglutė',c:[150,190],s:H('M150 46 q0-30 -22-30 q-15 0 -15 14')+R('t3','polygon','points="150,150 66,262 234,262"')+R('t2','polygon','points="150,100 88,196 212,196"')+R('t1','polygon','points="150,58 108,138 192,138"')+R('trunk','rect','x="132" y="262" width="36" height="40" rx="4"','#8a5a33')+R('cap','circle','cx="150" cy="56" r="12"',GOLD)},
+bell:{n:'Varpelis',c:[150,190],s:H('M150 86 q0-30 -22-30 q-15 0 -15 14')+CP('<path d="'+BELL+'"/>')+R('body','path','d="'+BELL+'"')+'<g clip-path="url(#k)">'+R('band','rect','x="80" y="170" width="140" height="34"')+'</g>'+OL(BELL)+R('rim','rect','x="66" y="252" width="168" height="26" rx="13"')+R('clapper','circle','cx="150" cy="296" r="15"',GOLD)+R('cap','rect','x="134" y="84" width="32" height="24" rx="6"',GOLD)},
+heart:{n:'Širdis',c:[150,195],s:H('M150 106 q0-34 -24-34 q-16 0 -16 16')+R('heart','path','d="'+HEART+'"',RED)+R('inner','path','d="'+HEART+'" transform="translate(150 200) scale(.55) translate(-150 -200)"')+R('cap','rect','x="134" y="104" width="32" height="22" rx="5"',GOLD)},
+snow:{n:'Sniego senis',c:[150,190],s:H('M150 46 q0-30 -22-30 q-15 0 -15 14')+R('body','circle','cx="150" cy="238" r="68"')+R('head','circle','cx="150" cy="130" r="46"')+R('scarf','rect','x="106" y="168" width="88" height="18" rx="9"',RED)+'<polygon class="r" data-id="nose" points="150,126 184,134 150,140" fill="#f57c00" stroke="'+LINE+'" stroke-width="3" stroke-linejoin="round"/>'+R('eyes','circle','cx="136" cy="118" r="5"','#222')+R('eyes','circle','cx="164" cy="118" r="5"','#222')+R('buttons','circle','cx="150" cy="215" r="6"','#222')+R('buttons','circle','cx="150" cy="240" r="6"','#222')+R('buttons','circle','cx="150" cy="265" r="6"','#222')+R('brim','rect','x="100" y="88" width="100" height="10" rx="5"','#222')+R('hat','rect','x="116" y="46" width="68" height="44" rx="4"','#222')},
+gift:{n:'Dovana',c:[150,220],s:H('M150 116 q0-34 -24-34 q-16 0 -16 16')+R('box','rect','x="60" y="178" width="180" height="124" rx="8"')+R('lid','rect','x="48" y="140" width="204" height="44" rx="8"')+R('ribbon','rect','x="134" y="140" width="32" height="162"',RED)+R('bow','ellipse','cx="116" cy="126" rx="34" ry="20" transform="rotate(-20 116 126)"',RED)+R('bow','ellipse','cx="184" cy="126" rx="34" ry="20" transform="rotate(20 184 126)"',RED)+R('knot','circle','cx="150" cy="134" r="14"','#b71c1c')},
+hat:{n:'Senelio kepurė',c:[150,175],s:H('M217 60 q0-30 -22-30 q-15 0 -15 14')+CP('<path d="'+CAP+'"/>')+R('hat','path','d="'+CAP+'"',RED)+'<g clip-path="url(#k)">'+R('stripe','rect','x="60" y="188" width="190" height="26"')+'</g>'+OL(CAP)+R('brim','rect','x="55" y="250" width="190" height="42" rx="21"','#ffffff')+R('pom','circle','cx="217" cy="84" r="24"','#ffffff')}
+};
+var COLORS=[['Raudona','#d62828'],['Tamsiai raudona','#8c1c1c'],['Oranžinė','#f57c00'],['Geltona','#f9d71c'],['Auksinė','#d4a72c'],['Šviesiai žalia','#8bc34a'],['Žalia','#2a9d4f'],['Tamsiai žalia','#14532d'],['Žydra','#4fc3f7'],['Mėlyna','#2b6fd6'],['Tamsiai mėlyna','#1a2f6b'],['Violetinė','#8e44ad'],['Rožinė','#ff7eb6'],['Ryški rožinė','#e91e8c'],['Persikinė','#ffc9a8'],['Ruda','#7b4a2a'],['Balta','#ffffff'],['Sidabrinė','#b0bec5'],['Pilka','#6b7280'],['Juoda','#1f1f1f']];
+var PATS=[['solid','Vientisa'],['stripes','Juostelės'],['dots','Taškeliai'],['checks','Languota'],['zig','Zigzagas'],['stars','Žvaigždutės'],['snow','Snaigės'],['hearts','Širdelės']];
+var GLYPHS=['❄','❅','❆','★','✦','✶','♥','●','✿','❖','♪','✚'];
+var EMOJIS=['🎄','🎁','🔔','⛄','🦌','🍪'];
+var SYMS=[['1','Vieną kartą'],['m','Su atspindžiu'],['3','3 kartus'],['4','4 kartus'],['6','6 kartus'],['8','8 kartus']];
+var BGS=[['Sniegas','#eaf4ff','#12372a'],['Naktis','#14234d','#ffffff'],['Kreminis','#fff3d6','#5a2d0c'],['Mėtinis','#d7efe0','#12372a'],['Vyšninis','#7a1f2b','#ffffff']];
+var state={shape:'ball',fills:{},deco:[],bg:0},undo=[],redo=[];
+var sel={a:'#d62828',b:'#ffffff'},pat='solid',tool='fill',dc={ch:'❄',e:false},sym='1',size=34,rot=0;
+var $=function(i){return document.getElementById(i)};
+var svg=$('svg'),art=$('art'),decoG=$('deco'),defs=$('defs');
+
+function snap(){undo.push(JSON.stringify(state));if(undo.length>100)undo.shift();redo=[];}
+function pid(f){return 'p'+f.p+f.a.slice(1)+f.b.slice(1);}
+function addPat(f){
+  var id=pid(f);if(document.getElementById(id))return;
+  var a=f.a,b=f.b,w=16,tr='',bg='<rect width="16" height="16" fill="'+a+'"/>',in_='';
+  function T(ch,fs){w=18;bg='<rect width="18" height="18" fill="'+a+'"/>';return '<text x="9" y="9" text-anchor="middle" dominant-baseline="central" font-size="'+fs+'" fill="'+b+'">'+ch+'</text>';}
+  if(f.p==='stripes'){tr=' patternTransform="rotate(45)"';in_='<rect width="16" height="7" fill="'+b+'"/>';}
+  else if(f.p==='dots')in_='<circle cx="8" cy="8" r="3.5" fill="'+b+'"/>';
+  else if(f.p==='checks')in_='<rect width="8" height="8" fill="'+b+'"/><rect x="8" y="8" width="8" height="8" fill="'+b+'"/>';
+  else if(f.p==='zig')in_='<path d="M0 12L4 4L8 12L12 4L16 12" fill="none" stroke="'+b+'" stroke-width="2.2"/>';
+  else if(f.p==='stars')in_=T('★',13);
+  else if(f.p==='snow')in_=T('❄',13);
+  else in_=T('♥',13);
+  defs.insertAdjacentHTML('beforeend','<pattern id="'+id+'" patternUnits="userSpaceOnUse" width="'+w+'" height="'+w+'"'+tr+'>'+bg+in_+'</pattern>');
+}
+function fillVal(f){if(f.p==='solid')return f.a;addPat(f);return 'url(#'+pid(f)+')';}
+function draw(){
+  art.innerHTML=SHAPES[state.shape].s;
+  var rs=art.querySelectorAll('.r');
+  for(var i=0;i<rs.length;i++){var f=state.fills[rs[i].getAttribute('data-id')];rs[i].setAttribute('fill',f?fillVal(f):'#ffffff');}
+  var h='',pe=tool==='erase'?'all':'none';
+  state.deco.forEach(function(d){
+    h+='<text data-g="'+d.g+'" transform="translate('+d.x+' '+d.y+') rotate('+d.r+')" text-anchor="middle" dominant-baseline="central" font-size="'+d.s+'"'+(d.e?'':' fill="'+d.c+'" stroke="#3a3a3a" stroke-width=".8"')+' pointer-events="'+pe+'">'+d.ch+'</text>';});
+  decoG.innerHTML=h;
+  var bg=BGS[state.bg];$('bgr').setAttribute('fill',bg[1]);$('name').setAttribute('fill',bg[2]);
+  $('name').textContent=$('who').value;
+  svg.style.cursor=tool==='erase'?'not-allowed':'pointer';
+  refresh();
+}
+function updatePv(){var t=$('pvt');t.textContent=dc.ch;t.setAttribute('font-size',Math.max(20,Math.min(58,size*0.9)));t.setAttribute('fill',dc.e?'#000000':sel.a);$('pvg').setAttribute('transform','rotate('+rot+')');$('rotO').textContent=rot;}
+function press(sel_,fn){var els=document.querySelectorAll(sel_);for(var i=0;i<els.length;i++)els[i].setAttribute('aria-pressed',fn(els[i]));}
+function refresh(){
+  press('#shapes .chip',function(e){return e.getAttribute('data-k')===state.shape;});
+  press('#tools .chip',function(e){return e.getAttribute('data-t')===tool;});
+  press('#pats .chip',function(e){return e.getAttribute('data-p')===pat;});
+  press('.sw',function(e){return e.getAttribute('data-c')===sel[e.getAttribute('data-key')];});
+  press('#glyphs .dc,#emojis .dc',function(e){return e.getAttribute('data-ch')===dc.ch;});
+  press('#syms .chip',function(e){return e.getAttribute('data-s')===sym;});
+  press('#bgs .chip',function(e){return e.getAttribute('data-b')===String(state.bg);});
+  $('pFill').hidden=tool!=='fill';$('pDeco').hidden=tool!=='deco';$('pErase').hidden=tool!=='erase';
+  $('boxB').hidden=pat==='solid';
+  $('undo').disabled=!undo.length;$('redo').disabled=!redo.length;updatePv();
+}
+function chip(parent,txt,attr,val,fn){var b=document.createElement('button');b.className='chip';b.textContent=txt;b.setAttribute(attr,val);b.onclick=fn;parent.appendChild(b);}
+Object.keys(SHAPES).forEach(function(k){chip($('shapes'),SHAPES[k].n,'data-k',k,function(){snap();state={shape:k,fills:{},deco:[],bg:state.bg};draw();});});
+Array.prototype.forEach.call(document.querySelectorAll('#tools .chip'),function(b){b.onclick=function(){tool=b.getAttribute('data-t');draw();};});
+PATS.forEach(function(p){chip($('pats'),p[1],'data-p',p[0],function(){pat=p[0];refresh();});});
+SYMS.forEach(function(s){chip($('syms'),s[1],'data-s',s[0],function(){sym=s[0];refresh();});});
+BGS.forEach(function(b,i){chip($('bgs'),b[0],'data-b',String(i),function(){state.bg=i;draw();});});
+function pal(el,key){
+  COLORS.forEach(function(c){var b=document.createElement('button');b.className='sw';b.style.background=c[1];b.setAttribute('data-c',c[1]);b.setAttribute('data-key',key);b.setAttribute('aria-label',c[0]);b.title=c[0];b.onclick=function(){sel[key]=c[1];refresh();};el.appendChild(b);});
+  var l=document.createElement('input');l.type='color';l.className='own';l.title='Sava spalva';l.setAttribute('aria-label','Pasirink savo spalvą');l.value=sel[key];l.oninput=function(){sel[key]=l.value;refresh();};el.appendChild(l);
+}
+pal($('palA'),'a');pal($('palB'),'b');pal($('palD'),'a');
+function dbtn(el,ch,e){var b=document.createElement('button');b.className='dc';b.textContent=ch;b.setAttribute('data-ch',ch);b.setAttribute('aria-label','Papuošalas '+ch);b.onclick=function(){dc={ch:ch,e:e};refresh();};el.appendChild(b);}
+GLYPHS.forEach(function(g){dbtn($('glyphs'),g,false);});EMOJIS.forEach(function(g){dbtn($('emojis'),g,true);});
+$('size').oninput=function(){size=+this.value;$('sizeO').textContent=size;refresh();};
+$('rot').oninput=function(){rot=+this.value;refresh();};
+Array.prototype.forEach.call(document.querySelectorAll('[data-r]'),function(b){b.onclick=function(){rot=+b.getAttribute('data-r');$('rot').value=rot;refresh();};});
+function rd(v){return Math.round(v*10)/10;}
+svg.addEventListener('click',function(e){
+  if(tool==='fill'){
+    var t=e.target.closest?e.target.closest('.r'):null;
+    if(t){snap();state.fills[t.getAttribute('data-id')]={a:sel.a,b:sel.b,p:pat};draw();}
+  }else if(tool==='deco'){
+    var p=svg.createSVGPoint();p.x=e.clientX;p.y=e.clientY;
+    var q=p.matrixTransform(svg.getScreenCTM().inverse());
+    if(q.y>315)return;
+    var c=SHAPES[state.shape].c,g=Date.now()+'-'+Math.floor(Math.random()*1e6),out=[];
+    if(sym==='m'){out.push([q.x,q.y,rot],[2*c[0]-q.x,q.y,-rot]);}
+    else{var n=+sym;for(var i=0;i<n;i++){var a=2*Math.PI*i/n,dx=q.x-c[0],dy=q.y-c[1];
+      out.push([c[0]+dx*Math.cos(a)-dy*Math.sin(a),c[1]+dx*Math.sin(a)+dy*Math.cos(a),rot+i*360/n]);}}
+    snap();
+    out.forEach(function(o){state.deco.push({g:g,x:rd(o[0]),y:rd(o[1]),r:Math.round(o[2]),ch:dc.ch,e:dc.e,c:sel.a,s:size});});
+    draw();
+  }else{
+    var d=e.target.closest?e.target.closest('[data-g]'):null;
+    if(d){var g2=d.getAttribute('data-g');snap();state.deco=state.deco.filter(function(x){return x.g!==g2;});draw();}
+  }
+});
+$('undo').onclick=function(){if(undo.length){redo.push(JSON.stringify(state));state=JSON.parse(undo.pop());draw();}};
+$('redo').onclick=function(){if(redo.length){undo.push(JSON.stringify(state));state=JSON.parse(redo.pop());draw();}};
+$('clear').onclick=function(){snap();state={shape:state.shape,fills:{},deco:[],bg:state.bg};draw();};
+$('who').oninput=function(){$('name').textContent=this.value;};
+draw();
+var RM=!!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches),osn=!RM,OBG='',OSN='';
+(function(){var o='',i,x,cols=['#e53935','#f9d71c','#2b6fd6','#43a047','#ff7eb6'],pts=[];
+ for(x=-10;x<310;x+=20)o+='<polygon points="'+x+',4 '+(x+10)+',30 '+(x+20)+',4" fill="#1f7a45" stroke="#14532d" stroke-width="1.5"/>';
+ o+='<rect x="0" y="0" width="300" height="9" fill="#14532d"/>';
+ for(i=0;i<11;i++)pts.push([12+i*27.6,20+8*Math.sin(i*1.2)]);
+ o+='<polyline points="'+pts.map(function(q){return q[0].toFixed(1)+','+q[1].toFixed(1);}).join(' ')+'" fill="none" stroke="#2b2b2b" stroke-width="1.5"/>';
+ pts.forEach(function(q,j){var c=cols[j%5],an=RM?'':'<animate attributeName="opacity" values=".35;1;.35" dur="'+(1.2+(j%4)*.5)+'s" repeatCount="indefinite"/>';
+  o+='<circle cx="'+q[0].toFixed(1)+'" cy="'+q[1].toFixed(1)+'" r="9" fill="'+c+'" opacity=".25"/><circle cx="'+q[0].toFixed(1)+'" cy="'+(q[1]+3).toFixed(1)+'" r="4.5" fill="'+c+'" stroke="#2b2b2b" stroke-width="1">'+an+'</circle>';});
+ OBG=o;
+ var s=5;for(i=0;i<26;i++){s=(s*9301+49297)%233280;var fx=s/233280*300;s=(s*9301+49297)%233280;var fr=1.2+s/233280*2.2;s=(s*9301+49297)%233280;var d=6+s/233280*6;
+  OSN+='<circle cx="'+fx.toFixed(1)+'" cy="-6" r="'+fr.toFixed(1)+'" fill="#ffffff" stroke="#b9d8ec" stroke-width=".5"><animate attributeName="cy" from="-6" to="352" dur="'+d.toFixed(1)+'s" begin="-'+(d*(s%97)/97).toFixed(1)+'s" repeatCount="indefinite"/><animate attributeName="cx" values="'+fx.toFixed(1)+';'+(fx+14).toFixed(1)+';'+fx.toFixed(1)+'" dur="'+(d/2).toFixed(1)+'s" repeatCount="indefinite"/></circle>';}
+})();
+function life(){$('obg').innerHTML=OBG;$('osnow').innerHTML=osn?OSN:'';$('osn').setAttribute('aria-pressed',osn);}
+$('osn').onclick=function(){osn=!osn;life();};
+life();
+})();
+(function(){
+var $=function(i){return document.getElementById(i)};
+function rd(v){return Math.round(v*10)/10;}
+function cl(v,a,b){return Math.max(a,Math.min(b,v));}
+var W=900,G=470,RM=!!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches);
+var GEO=[['sq','rect','Kvadratas',90,90],['rc','rect','Stačiakampis',150,80],['tw','rect','Aukštas stačiakampis',70,170],['tr','tri','Trikampis',130,80],['sp','tri','Smailus trikampis',80,130],['tz','trap','Trapecija',150,70],['dm','dome','Kupolas',130,65],['ci','circ','Skritulys',90,90],['rb','rhomb','Rombas',90,110],['hx','hex','Šešiakampis',110,96]];
+var DET=[['wn','win','Langas',40,50,'#ffe27a',1],['rw','rwin','Apvalus langas',44,44,'#ffe27a',1],['dr','door','Durys',48,70,'#7b4a2a',0],['ch','chim','Kaminas',40,80,'#a0623f',1],['fn','fence','Tvorelė',150,48,'#ffffff',0],['lm','lamp','Žibintas',30,120,'#ffe27a',0],['tg','tree','Eglutė',90,130,'#2a9d4f',0],['sm','snow','Sniego senis',90,110,'#ffffff',0],['st','star','Žvaigždė',54,54,'#f9d71c',1],['gf','gift','Dovana',56,56,'#d62828',0],['ic','icic','Varvekliai',130,46,'#e8f7ff',1],['wr','wreath','Vainikas',64,64,'#2a9d4f',1]];
+var TY={};GEO.concat(DET).forEach(function(t){TY[t[0]]={k:t[1],n:t[2],w:t[3],h:t[4],c:t[5]||null,f:!!t[6]};});
+var TC=[['Ledas','#d6f0fb'],['Šviesus ledas','#9fd8f0'],['Mėlynas ledas','#5bb4e0'],['Balta','#ffffff'],['Šerkšnas','#e8eef2'],['Sidabrinė','#b0bec5'],['Raudona','#d62828'],['Tamsiai raudona','#8c1c1c'],['Oranžinė','#f57c00'],['Geltona','#f9d71c'],['Auksinė','#d4a72c'],['Žalia','#2a9d4f'],['Tamsiai žalia','#14532d'],['Tamsiai mėlyna','#1a2f6b'],['Violetinė','#8e44ad'],['Rožinė','#ff7eb6'],['Ruda','#7b4a2a'],['Juoda','#1f1f1f']];
+var SK=[['Diena','#8fcbf0','#e4f4fc','#12372a','#cfe4f2','#b9d7ea','#ffffff'],['Saulėlydis','#f5a97a','#ffe3c9','#5a2d0c','#f0c7b8','#e3aa9c','#fff2e8'],['Naktis','#0e1c4a','#2c4a8c','#ffffff','#233a73','#1a2d5e','#dce8f6']];
+var SP=[[.5,0],[.641,.348],[1,.382],[.729,.631],[.808,1],[.5,.806],[.191,1],[.271,.631],[0,.382],[.359,.348]];
+var TP=[[.5,0],[.8,.3],[.65,.3],[.9,.62],[.7,.62],[1,.9],[.58,.9],[.58,1],[.42,1],[.42,.9],[0,.9],[.3,.62],[.1,.62],[.35,.3],[.2,.3]];
+var STARS='';(function(){var s=7;for(var i=0;i<44;i++){s=(s*9301+49297)%233280;var x=s/233280*W;s=(s*9301+49297)%233280;var y=s/233280*300+20;s=(s*9301+49297)%233280;var d=2+s/233280*3;
+ STARS+='<circle cx="'+rd(x)+'" cy="'+rd(y)+'" r="'+(i%5?1.6:2.4)+'" fill="#ffffff">'+(RM?'':'<animate attributeName="opacity" values=".25;1;.25" dur="'+rd(d)+'s" repeatCount="indefinite"/>')+'</circle>';}})();
+var SNOW='';(function(){var s=11;for(var i=0;i<46;i++){s=(s*9301+49297)%233280;var x=s/233280*W;s=(s*9301+49297)%233280;var r=1.6+s/233280*2.6;s=(s*9301+49297)%233280;var d=7+s/233280*8;
+ SNOW+='<circle cx="'+rd(x)+'" cy="-8" r="'+rd(r)+'" fill="#ffffff" stroke="#b9d8ec" stroke-width=".6" opacity=".95"><animate attributeName="cy" from="-8" to="568" dur="'+rd(d)+'s" begin="-'+rd(d*(s%97)/97)+'s" repeatCount="indefinite"/><animate attributeName="cx" values="'+rd(x)+';'+rd(x+24)+';'+rd(x)+'" dur="'+rd(d/2)+'s" repeatCount="indefinite"/></circle>';}})();
+function sky(i){var s='',k=SK[i];
+ if(i===0)s='<circle cx="780" cy="90" r="54" fill="#fff3a8" opacity=".4"/><circle cx="780" cy="90" r="38" fill="#fff3a8"/><g fill="#fff" opacity=".9"><ellipse cx="170" cy="110" rx="62" ry="20"/><ellipse cx="212" cy="94" rx="40" ry="20"/><ellipse cx="540" cy="80" rx="56" ry="18"/><ellipse cx="578" cy="66" rx="34" ry="16"/></g>';
+ else if(i===1)s='<circle cx="700" cy="400" r="100" fill="#ffb066" opacity=".35"/><circle cx="700" cy="400" r="70" fill="#ff9a4d"/><g fill="#ffd4c0" opacity=".85"><ellipse cx="200" cy="120" rx="70" ry="18"/><ellipse cx="520" cy="170" rx="60" ry="16"/></g>';
+ else s=STARS+'<circle cx="780" cy="90" r="50" fill="#fff7c2" opacity=".25"/><circle cx="780" cy="90" r="34" fill="#fff7c2"/>';
+ s+='<path d="M0 470V400Q120 330 260 390T520 380T780 350T900 390V470Z" fill="'+k[4]+'"/><path d="M0 470V430Q150 390 300 430T620 420T900 410V470Z" fill="'+k[5]+'"/>';
+ [60,115,790,845].forEach(function(x){s+='<polygon points="'+x+',385 '+(x+16)+',430 '+(x-16)+',430" fill="'+k[5]+'"/>';});
+ return s+'<path d="M0 470Q75 458 150 470T300 470T450 470T600 470T750 470T900 470V560H0Z" fill="'+k[6]+'" stroke="#9db9cc" stroke-width="2"/>';}
+var SKYS=[sky(0),sky(1),sky(2)];
+function el(p){var x=p.x,y=p.y,w=p.w,h=p.h,c=p.c,k=TY[p.t].k,m=Math.min(w,h),i,n,o='',r=Math.max(2.5,m*.045);
+ var sk='stroke="#2c4a5a" stroke-width="2.5" stroke-linejoin="round"',s2='stroke="#2c4a5a" stroke-width="1.5"';
+ function X(v){return rd(x+v*w);}function Y(v){return rd(y+v*h);}
+ function P(a){return a.map(function(q){return X(q[0])+','+Y(q[1]);}).join(' ');}
+ function pg(a,f){return '<polygon points="'+P(a)+'" fill="'+(f||c)+'" '+sk+'/>';}
+ function rc(a,b,u,v,f,q){return '<rect x="'+X(a)+'" y="'+Y(b)+'" width="'+rd(u*w)+'" height="'+rd(v*h)+'" rx="'+(q||0)+'" fill="'+f+'" '+sk+'/>';}
+ function ln(a,b,u,v){return '<line x1="'+X(a)+'" y1="'+Y(b)+'" x2="'+X(u)+'" y2="'+Y(v)+'" stroke="#2c4a5a" stroke-width="2"/>';}
+ function cc(a,b,q,f){return '<circle cx="'+X(a)+'" cy="'+Y(b)+'" r="'+rd(q)+'" fill="'+f+'" '+s2+'/>';}
+ function ee(a,b,u,v,f){return '<ellipse cx="'+X(a)+'" cy="'+Y(b)+'" rx="'+rd(u*w)+'" ry="'+rd(v*h)+'" fill="'+f+'" '+sk+'/>';}
+ switch(k){
+ case 'rect':return rc(0,0,1,1,c);
+ case 'tri':return pg([[.5,0],[1,1],[0,1]]);
+ case 'trap':return pg([[.2,0],[.8,0],[1,1],[0,1]]);
+ case 'rhomb':return pg([[.5,0],[1,.5],[.5,1],[0,.5]]);
+ case 'hex':return pg([[.25,0],[.75,0],[1,.5],[.75,1],[.25,1],[0,.5]]);
+ case 'star':return pg(SP);
+ case 'circ':return ee(.5,.5,.5,.5,c);
+ case 'dome':return '<path d="M'+x+' '+(y+h)+'A'+rd(w/2)+' '+h+' 0 0 1 '+rd(x+w)+' '+(y+h)+'Z" fill="'+c+'" '+sk+'/>';
+ case 'win':return rc(0,0,1,1,c,2)+ln(.5,0,.5,1)+ln(0,.5,1,.5);
+ case 'rwin':return ee(.5,.5,.5,.5,c)+ln(.5,0,.5,1)+ln(0,.5,1,.5);
+ case 'door':return '<path d="M'+x+' '+(y+h)+'L'+x+' '+Y(.4)+'Q'+x+' '+y+' '+X(.5)+' '+y+'Q'+rd(x+w)+' '+y+' '+rd(x+w)+' '+Y(.4)+'L'+rd(x+w)+' '+(y+h)+'Z" fill="'+c+'" '+sk+'/>'+ln(.5,.3,.5,1)+cc(.78,.6,Math.max(2.5,w*.07),'#f9d71c');
+ case 'chim':return rc(.1,.15,.8,.85,c)+ln(.1,.45,.9,.45)+ln(.1,.7,.9,.7)+rc(0,0,1,.2,'#6b4630',2);
+ case 'fence':n=Math.max(2,Math.round(w/18));o=rc(0,.4,1,.12,c)+rc(0,.75,1,.12,c);for(i=0;i<n;i++){var q=(i+.15)/n,u=.7/n;o+=pg([[q,.25],[q+u/2,0],[q+u,.25],[q+u,1],[q,1]]);}return o;
+ case 'lamp':return rc(.42,.22,.16,.78,'#3d3d3d')+rc(.28,.92,.44,.08,'#3d3d3d')+rc(.15,0,.7,.28,c,5);
+ case 'tree':return pg(TP)+cc(.5,.22,r,'#f9d71c')+cc(.42,.5,r,'#d62828')+cc(.62,.48,r,'#2b6fd6')+cc(.3,.78,r,'#f9d71c')+cc(.72,.76,r,'#d62828')+cc(.5,.72,r,'#8e44ad');
+ case 'snow':return ee(.5,.72,.42,.28,c)+ee(.5,.28,.27,.2,c)+rc(.3,.46,.4,.06,'#d62828',2)+rc(.34,0,.32,.1,'#222222',1)+rc(.28,.09,.44,.04,'#222222',1)+cc(.42,.24,r*.7,'#222222')+cc(.58,.24,r*.7,'#222222')+pg([[.5,.27],[.74,.31],[.5,.34]],'#f57c00')+cc(.5,.62,r*.7,'#222222')+cc(.5,.74,r*.7,'#222222')+cc(.5,.86,r*.7,'#222222');
+ case 'gift':return rc(0,.25,1,.75,c)+rc(.42,.25,.16,.75,'#f9d71c')+rc(0,.55,1,.14,'#f9d71c')+cc(.38,.14,m*.1,'#f9d71c')+cc(.62,.14,m*.1,'#f9d71c');
+ case 'icic':n=Math.max(3,Math.round(w/16));o=rc(0,0,1,.2,c,3);for(i=0;i<n;i++)o+=pg([[i/n,.18],[(i+1)/n,.18],[(i+.5)/n,.55+((i*37)%5)*.1]]);return o;
+ default:return '<ellipse cx="'+X(.5)+'" cy="'+Y(.5)+'" rx="'+rd(w*.4)+'" ry="'+rd(h*.4)+'" fill="none" stroke="'+c+'" stroke-width="'+rd(m*.2)+'"/><ellipse cx="'+X(.5)+'" cy="'+Y(.5)+'" rx="'+rd(w*.4)+'" ry="'+rd(h*.4)+'" fill="none" stroke="#2c4a5a" stroke-width="1.2"/>'+cc(.5,.92,r,'#d62828')+cc(.36,.9,r*.8,'#d62828')+cc(.64,.9,r*.8,'#d62828')+cc(.2,.5,r*.6,'#d62828')+cc(.8,.5,r*.6,'#d62828');
+ }}
+var S={pc:[],bg:0},sel=null,col='#9fd8f0',und=[],red=[],drag=null,sn=!RM,sv=$('tsvg');
+function snp(){und.push(JSON.stringify(S));if(und.length>100)und.shift();red=[];}
+function press(q,fn){var e=document.querySelectorAll(q);for(var i=0;i<e.length;i++)e[i].setAttribute('aria-pressed',fn(e[i]));}
+function draw(){var h='',night=S.bg===2,k=SK[S.bg];
+ S.pc.forEach(function(p,i){
+  if(night&&(p.t==='wn'||p.t==='rw'||p.t==='lm'))h+='<circle cx="'+rd(p.x+p.w/2)+'" cy="'+rd(p.y+p.h*(p.t==='lm'?.14:.5))+'" r="'+rd(Math.max(p.w,p.h)*(p.t==='lm'?.9:1.3))+'" fill="url(#glow)" pointer-events="none"/>';
+  h+='<g data-i="'+i+'" style="cursor:grab">'+el(p)+'</g>';});
+ if(sel!==null&&S.pc[sel]){var p=S.pc[sel];h+='<rect x="'+(p.x-4)+'" y="'+(p.y-4)+'" width="'+(p.w+8)+'" height="'+(p.h+8)+'" fill="none" stroke="#c62828" stroke-width="2.5" stroke-dasharray="7 5" pointer-events="none"/>';}
+ $('tart').innerHTML=h;
+ $('tg0').setAttribute('stop-color',k[1]);$('tg1').setAttribute('stop-color',k[2]);$('tname').setAttribute('fill',k[3]);$('tname').textContent=$('tn').value;
+ $('tbg').innerHTML=SKYS[S.bg];$('tsnow').innerHTML=sn?SNOW:'';
+ $('tctl').hidden=sel===null;$('tnone').hidden=sel!==null;
+ $('tundo').disabled=!und.length;$('tredo').disabled=!red.length;$('tsn').setAttribute('aria-pressed',sn);
+ press('#tskyb .chip',function(e){return e.getAttribute('data-b')===String(S.bg);});
+ press('#tpal .sw',function(e){return e.getAttribute('data-c')===col;});}
+function settle(i){var p=S.pc[i];if(TY[p.t].f)return;var b=p.y+p.h,best=null,sup=[G];
+ S.pc.forEach(function(q,j){if(j!==i&&Math.min(p.x+p.w,q.x+q.w)-Math.max(p.x,q.x)>10)sup.push(q.y);});
+ sup.forEach(function(s){var d=Math.abs(b-s);if(d<=16&&(best===null||d<Math.abs(b-best)))best=s;});
+ if(best!==null)p.y=best-p.h;}
+function pt(e){var p=sv.createSVGPoint();p.x=e.clientX;p.y=e.clientY;return p.matrixTransform(sv.getScreenCTM().inverse());}
+sv.addEventListener('pointerdown',function(e){var g=e.target.closest('[data-i]');
+ if(!g){sel=null;draw();return;}
+ e.preventDefault();var i=+g.getAttribute('data-i'),p=S.pc[i],q=pt(e);sel=i;
+ drag={dx:q.x-p.x,dy:q.y-p.y,m:false,b:JSON.stringify(S)};sv.setPointerCapture(e.pointerId);draw();});
+sv.addEventListener('pointermove',function(e){if(!drag)return;var p=S.pc[sel],q=pt(e);
+ p.x=cl(Math.round((q.x-drag.dx)/10)*10,0,W-p.w);p.y=cl(Math.round((q.y-drag.dy)/10)*10,0,G-p.h);drag.m=true;draw();});
+function up(){if(drag&&drag.m){und.push(drag.b);red=[];settle(sel);draw();}drag=null;}
+sv.addEventListener('pointerup',up);sv.addEventListener('pointercancel',up);
+function icon(id){var t=TY[id],s=Math.min(40/t.w,32/t.h),w=t.w*s,h=t.h*s;
+ return '<svg viewBox="0 0 44 36" aria-hidden="true">'+el({t:id,x:(44-w)/2,y:(36-h)/2,w:w,h:h,c:t.c||'#9fd8f0'})+'</svg>';}
+function addT(id){snp();var t=TY[id],p={t:id,w:t.w,h:t.h,c:t.c||col};
+ p.x=cl(Math.round((W/2-p.w/2)/10)*10,0,W-p.w);p.y=G-p.h;S.pc.push(p);sel=S.pc.length-1;draw();}
+function mk(list,box){list.forEach(function(t){var b=document.createElement('button');b.className='sh';b.innerHTML=icon(t[0])+'<span>'+t[2]+'</span>';b.onclick=function(){addT(t[0]);};$(box).appendChild(b);});}
+mk(GEO,'tgeo');mk(DET,'tdet');
+TC.forEach(function(c){var b=document.createElement('button');b.className='sw';b.style.background=c[1];b.setAttribute('data-c',c[1]);b.setAttribute('aria-label',c[0]);b.title=c[0];
+ b.onclick=function(){col=c[1];if(sel!==null){snp();S.pc[sel].c=c[1];}draw();};$('tpal').appendChild(b);});
+(function(){var l=document.createElement('input');l.type='color';l.className='own';l.title='Sava spalva';l.setAttribute('aria-label','Pasirink savo spalvą');l.value='#9fd8f0';
+ l.onfocus=function(){l._b=JSON.stringify(S);};l.onchange=function(){if(l._b){und.push(l._b);l._b=null;red=[];}};
+ l.oninput=function(){col=l.value;if(sel!==null)S.pc[sel].c=col;draw();};$('tpal').appendChild(l);})();
+SK.forEach(function(s,i){var b=document.createElement('button');b.className='chip';b.textContent=s[0];b.setAttribute('data-b',String(i));b.onclick=function(){snp();S.bg=i;draw();};$('tskyb').appendChild(b);});
+$('tctl').addEventListener('click',function(e){var b=e.target.closest('[data-op]');if(!b||sel===null)return;
+ var op=b.getAttribute('data-op'),p=S.pc[sel];snp();
+ if(op==='up'){p.w=cl(Math.round(p.w*1.15),20,500);p.h=cl(Math.round(p.h*1.15),20,500);}
+ else if(op==='dn'){p.w=cl(Math.round(p.w*.87),20,500);p.h=cl(Math.round(p.h*.87),20,500);}
+ else if(op==='w+')p.w=cl(p.w+10,20,500);else if(op==='w-')p.w=cl(p.w-10,20,500);
+ else if(op==='h+')p.h=cl(p.h+10,20,500);else if(op==='h-')p.h=cl(p.h-10,20,500);
+ else if(op==='front'){S.pc.push(S.pc.splice(sel,1)[0]);sel=S.pc.length-1;}
+ else if(op==='back'){S.pc.unshift(S.pc.splice(sel,1)[0]);sel=0;}
+ else if(op==='dup'){var c=JSON.parse(JSON.stringify(p));c.x=cl(c.x+20,0,W-c.w);S.pc.push(c);sel=S.pc.length-1;}
+ else if(op==='del'){S.pc.splice(sel,1);sel=null;}
+ if(sel!==null){var q=S.pc[sel];q.x=cl(q.x,0,W-q.w);q.y=cl(q.y,0,G-q.h);}
+ draw();});
+var EX=[['🏠 Namelis',[['ch',520,300,40,70,'#a0623f'],['rc',330,380,240,90,'#ffd9a8'],['tr',310,310,280,70,'#b3322b'],['dr',430,400,48,70,'#7b4a2a'],['wn',350,410,44,50,'#ffe27a'],['wn',506,410,44,50,'#ffe27a'],['tg',630,340,90,130,'#2a9d4f'],['sm',220,360,90,110,'#ffffff']]],
+['🏰 Ledo pilis',[['rc',300,340,300,130,'#d6f0fb'],['ic',320,340,90,40,'#e8f7ff'],['ic',490,340,90,40,'#e8f7ff'],['tw',230,250,80,220,'#9fd8f0'],['tw',590,250,80,220,'#9fd8f0'],['tw',410,200,80,270,'#9fd8f0'],['sp',230,160,80,90,'#5bb4e0'],['sp',590,160,80,90,'#5bb4e0'],['sp',410,100,80,100,'#5bb4e0'],['dr',428,400,44,70,'#1a2f6b'],['wn',252,290,36,50,'#ffe27a'],['wn',612,290,36,50,'#ffe27a'],['wn',432,230,36,56,'#ffe27a'],['st',425,40,50,50,'#f9d71c'],['tg',110,340,90,130,'#2a9d4f'],['tg',710,340,90,130,'#2a9d4f']]],
+['🏘️ Kalėdų kaimelis',[['sm',20,360,76,110,'#ffffff'],['rc',120,400,130,70,'#e8b7a0'],['tr',110,345,150,55,'#8c1c1c'],['dr',165,420,36,50,'#7b4a2a'],['wn',128,424,28,34,'#ffe27a'],['wn',212,424,28,34,'#ffe27a'],['tg',262,360,60,110,'#2a9d4f'],['rc',330,330,120,140,'#b8d4f0'],['tr',320,270,140,60,'#2a6b3a'],['dr',372,410,36,60,'#7b4a2a'],['wn',345,350,32,40,'#ffe27a'],['wn',393,350,32,40,'#ffe27a'],['lm',458,350,26,120,'#ffe27a'],['tg',490,350,80,120,'#14532d'],['ch',690,310,36,60,'#a0623f'],['rc',600,390,160,80,'#f4e3b0'],['tr',590,335,180,55,'#b3322b'],['dr',662,410,40,60,'#7b4a2a'],['wn',615,415,32,38,'#ffe27a'],['wn',715,415,32,38,'#ffe27a'],['tg',800,340,80,130,'#2a9d4f']]]];
+function showEx(i){var x=EX[i],h='<rect width="900" height="560" fill="#bfe3f7"/>'+SKYS[0],g={},d={};
+ x[1].forEach(function(a){var t=TY[a[0]],m=GEO.some(function(q){return q[0]===a[0];})?g:d;m[t.n]=(m[t.n]||0)+1;h+=el({t:a[0],x:a[1],y:a[2],w:a[3],h:a[4],c:a[5]});});
+ $('texsv').innerHTML=h;
+ function L(o){return Object.keys(o).map(function(n){return n+' × '+o[n];}).join(', ');}
+ $('texn').textContent='Figūros: '+L(g)+(L(d)?'. Detalės: '+L(d):'')+'.';
+ press('#tex .chip',function(e){return e.getAttribute('data-e')===String(i);});}
+EX.forEach(function(x,i){var b=document.createElement('button');b.className='chip';b.textContent=x[0];b.setAttribute('data-e',String(i));b.onclick=function(){showEx(i);};$('tex').appendChild(b);});
+showEx(0);
+$('tundo').onclick=function(){if(und.length){red.push(JSON.stringify(S));S=JSON.parse(und.pop());sel=null;draw();}};
+$('tredo').onclick=function(){if(red.length){und.push(JSON.stringify(S));S=JSON.parse(red.pop());sel=null;draw();}};
+$('tclear').onclick=function(){snp();S.pc=[];sel=null;draw();};
+$('tsn').onclick=function(){sn=!sn;draw();};
+$('tn').oninput=function(){$('tname').textContent=this.value;};
+document.addEventListener('keydown',function(e){if($('town').hidden||sel===null)return;var tg=e.target.tagName;if(tg==='INPUT'||tg==='TEXTAREA')return;
+ var p=S.pc[sel],d={ArrowLeft:[-10,0],ArrowRight:[10,0],ArrowUp:[0,-10],ArrowDown:[0,10]}[e.key];
+ if(d){e.preventDefault();snp();p.x=cl(p.x+d[0],0,W-p.w);p.y=cl(p.y+d[1],0,G-p.h);draw();}
+ else if(e.key==='Delete'||e.key==='Backspace'){e.preventDefault();snp();S.pc.splice(sel,1);sel=null;draw();}});
+draw();
+})();
+(function(){
+var $=function(i){return document.getElementById(i)};
+function show(k){$('pick').hidden=!!k;$('back').hidden=!k;$('orn').hidden=k!=='zaisliukai';$('town').hidden=k!=='miestelis';}
+function fromHash(){var h=location.hash.slice(1);show(h==='zaisliukai'||h==='miestelis'?h:null);}
+Array.prototype.forEach.call(document.querySelectorAll('[data-go]'),function(b){b.onclick=function(){location.hash=b.getAttribute('data-go');};});
+$('back').onclick=function(){location.hash='';};
+window.addEventListener('hashchange',fromHash);fromHash();
+})();
+</script>
+</body>
+</html>
